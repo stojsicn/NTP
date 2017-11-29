@@ -33,6 +33,7 @@ namespace Dvostruka_Ciklicna_lista
                 
             }
         } //RADI
+
         public void AddLast(int data)
         {
             Node temp = head;
@@ -53,6 +54,7 @@ namespace Dvostruka_Ciklicna_lista
                 len++;
             }
         } //RADI
+
         public void Add(int data, int index)
         {
             Node temp = head;
@@ -78,6 +80,7 @@ namespace Dvostruka_Ciklicna_lista
                 len++;
             }
         } //RADI ALI NE KONTAM (-1)
+
         public void Remove(int index)
         {
             Node temp = head;
@@ -98,6 +101,7 @@ namespace Dvostruka_Ciklicna_lista
                 
             }
         } //RADI ALI NE KONTAM (-1)
+
         public int Find(int index)
         {
             Node temp = head;
@@ -116,6 +120,7 @@ namespace Dvostruka_Ciklicna_lista
                 return temp.Data;
             }
         } //RADI ALI NE KONTAM (-1)
+
         public void Reverse()
         {
            
@@ -134,33 +139,98 @@ namespace Dvostruka_Ciklicna_lista
                 }
             }
         } // RADI ALI NISAM SIGURAN STA SE DESILO SA PREV-OVIMA
+
         public int Length()
         {
             return len;
         } //RADI
+
+        public int GetMax()
+        {
+            Node temp = head;
+            Node max = head;
+            int i = 0;
+            if (head == null)
+            {
+                return -1;
+            }
+            else
+            {
+                do
+                {
+                    if (temp.Data > max.Data)
+                    {
+                        max = temp;
+                        temp = temp.Next;
+                    }
+                    else
+                    {
+                        temp = temp.Next;
+                    }
+                } while (temp != head);
+
+                return max.Data;
+            }
+        } //RADI
+
+        public int GetMin()
+        {
+            Node temp = head;
+            Node min = head;
+            if (head == null)
+            {
+                return -1;
+            }
+            else
+            {
+                do
+                {
+                    if (temp.Data < min.Data)
+                    {
+                        min = temp;
+                        temp = temp.Next;
+                    }
+                    else
+                    {
+                        temp = temp.Next;
+                    }
+                } while (temp != head);
+
+                return min.Data;
+            }
+        } //RADI
+
         public void RemoveDuplicates()
         {
             Node temp = head;
-            Node temp2 = temp.Next;
-            if(head == null)
+            if (head == null)
             {
                 return;
             }
             else
             {
+                Node temp2 = head.Next;
                 for (int i = 0; i < len; i++)
                 {
-                    if(temp.Data == temp2.Data)
+                    int j = i + 1;
+                    do
                     {
-                        Remove(i + 1);
-                    }
-                    else
-                    {
-                        temp2 = temp2.Next;
-                    }
+                        if (temp.Data == temp2.Data)
+                        {
+                            Remove(j);
+                            temp2 = temp2.Next;
+                        }
+                        else
+                        {
+                            temp2 = temp2.Next;
+                            j++;
+                        }
+                    } while (j != len);
+                    temp = temp.Next;
                 }
             }
-        }
+        } //NE RADI
+
         public void Zamena()
         {
             Node temp = head;
@@ -179,6 +249,7 @@ namespace Dvostruka_Ciklicna_lista
 
             }
         } //NE RADI
+
         public override string ToString()
         {
             string s = "";

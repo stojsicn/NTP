@@ -12,18 +12,15 @@ namespace Dvostruka_Ciklicna_lista
         {
             Lista list = new Lista();
 
-            list.AddFirst(4);
-            list.AddFirst(3);
-            list.AddFirst(2);
-            list.AddFirst(1);
-            list.AddLast(5);
+            list.Add(1, 0);
+            list.Add(2, 1);
+            list.Add(2, 2);
+            list.Add(3 ,3);
+            list.Add(4, 4);
+            list.Add(5, 5);
+            list.Add(3, 6);
 
-            list.Remove(3);
-
-            Console.WriteLine(list.Find(2));
-
-            Console.WriteLine(list.Length());
-
+            Console.WriteLine(list.GetMin());
 
 
             Console.WriteLine(list);
